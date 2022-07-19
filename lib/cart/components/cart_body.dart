@@ -3,6 +3,8 @@ import 'package:ecommerce_app/model/Product.dart';
 import 'package:ecommerce_app/model/cart_model.dart';
 import 'package:ecommerce_app/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/parser.dart';
 
 class CartBodyPage extends StatefulWidget {
   const CartBodyPage({Key? key}) : super(key: key);
@@ -14,11 +16,40 @@ class CartBodyPage extends StatefulWidget {
 class _CartBodyPageState extends State<CartBodyPage> {
   @override
   Widget build(BuildContext context) {
-    return BuildCartItem(cart: cart[0]);
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: SizeConfig().getProportionateScreenWidth(20)),
+      child: ListView.builder(
+        itemCount: cart.length,
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Dismissible(
+            direction: DismissDirection.endToStart,
+            child: BuildCartItem(cart: cart[index]),
+            key: Key(cart[index].product.id.toString()),
+            background: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Color(0xFFFFE6E6),
+              ),
+              child: Row(children: [
+                Spacer(),
+                SvgPicture.asset("assets/icons/Trash.svg"),
+              ]),
+            ),
+            onDismissed: (direction) {
+              setState(() {
+                cart.removeAt(index);
+              });
+            },
+          ),
+        ),
+      ),
+    );
   }
 }
 
-// ignore: camel_case_types
 class BuildCartItem extends StatelessWidget {
   final CartModel cart;
   BuildCartItem({
