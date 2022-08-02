@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/constant.dart';
+import 'package:ecommerce_app/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'basic_module/basic_page.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
             bodyText2: TextStyle(color: kTextColor)),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BasicPage(),
+      home: ProfileScreen(),
     );
   }
 }

@@ -1,10 +1,9 @@
 import 'package:ecommerce_app/constant.dart';
-import 'package:ecommerce_app/model/Product.dart';
-import 'package:ecommerce_app/model/cart_model.dart';
 import 'package:ecommerce_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/parser.dart';
+
+import '../../model/cart_model.dart';
 
 class CartBodyPage extends StatefulWidget {
   const CartBodyPage({Key? key}) : super(key: key);
@@ -20,6 +19,8 @@ class _CartBodyPageState extends State<CartBodyPage> {
       padding: EdgeInsets.symmetric(
           horizontal: SizeConfig().getProportionateScreenWidth(20)),
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.vertical,
         itemCount: cart.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
