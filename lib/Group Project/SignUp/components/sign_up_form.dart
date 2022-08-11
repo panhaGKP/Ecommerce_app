@@ -2,8 +2,6 @@ import 'package:ecommerce_app/Group%20Project/SignUp/Complete_SignUp.dart';
 import 'package:ecommerce_app/Group%20Project/SignUp/SignUp.dart';
 import 'package:flutter/material.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -61,10 +59,18 @@ class _SignUpFormState extends State<SignUpForm> {
                   fontSize: 15,
                 ),
               ),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  //_formKey.currentState?.save();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ComSignUp()),
+                  );
+                }
+              },
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(25.0),
               ),
-              onPressed: () {},
             ),
           ),
         ],
