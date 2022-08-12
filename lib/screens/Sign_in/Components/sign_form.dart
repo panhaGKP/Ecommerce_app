@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/basic_module/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/size_config.dart';
 import 'package:ecommerce_app/constant.dart';
@@ -5,9 +6,7 @@ import 'package:ecommerce_app/screens/forgetpassword/forgetpassword_screen.dart'
 import 'form_error.dart';
 
 class SignForm extends StatefulWidget {
-  
-
- @override
+  @override
   State<SignForm> createState() => _SignFormState();
 }
 
@@ -22,15 +21,19 @@ class _SignFormState extends State<SignForm> {
     return Form(
       key: _formKey,
       child: Column(
-        children:[
-           buildEmailFormField(),
-           SizedBox(height: SizeConfig().getProportionateScreenHeight(20),),
-           buildPasswordFormField(),
-           SizedBox(height: SizeConfig().getProportionateScreenHeight(10),),
-           Row(
+        children: [
+          buildEmailFormField(),
+          SizedBox(
+            height: SizeConfig().getProportionateScreenHeight(20),
+          ),
+          buildPasswordFormField(),
+          SizedBox(
+            height: SizeConfig().getProportionateScreenHeight(10),
+          ),
+          Row(
             children: [
               Checkbox(
-                value: remember, 
+                value: remember,
                 activeColor: kPrimaryColor,
                 onChanged: (value) {
                   setState(() {
@@ -42,33 +45,38 @@ class _SignFormState extends State<SignForm> {
               Spacer(),
               GestureDetector(
                 onTap: () => Navigator.popAndPushNamed(
-                context, forgetpasswordscreen.routeName),
-                child: Text("Forgot Password",
-                style: TextStyle(
-                  decoration: TextDecoration.underline
-                ),),
+                    context, forgetpasswordscreen.routeName),
+                child: Text(
+                  "Forgot Password",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               )
             ],
-           ),
-              FormError(errors: errors),
-           SizedBox(height: SizeConfig().getProportionateScreenHeight(5),),
-           TextButton(
-                
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.only(left: 100, right:100),
+          ),
+          FormError(errors: errors),
+          SizedBox(
+            height: SizeConfig().getProportionateScreenHeight(5),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.only(left: 100, right: 100),
 
-                    primary: Color.fromARGB(255, 2, 2, 2),
-                    backgroundColor: Color.fromARGB(255, 72, 207, 117), // Background Color
-                ),
-                  onPressed: () { 
-                    if(_formKey.currentState!.validate()){
-                      _formKey.currentState!.save();
-                    }
-                  },
-                  child: Text('CONTINUE'),
-                ),
-                 SizedBox(height: SizeConfig().getProportionateScreenHeight(30),),
-
+              primary: Color.fromARGB(255, 2, 2, 2),
+              backgroundColor:
+                  Color.fromARGB(255, 72, 207, 117), // Background Color
+            ),
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => BasicPage()));
+              }
+            },
+            child: Text('CONTINUE'),
+          ),
+          SizedBox(
+            height: SizeConfig().getProportionateScreenHeight(30),
+          ),
         ],
       ),
     );
@@ -76,8 +84,8 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-            obscureText: true,
-            onSaved: (newValue) => password = newValue!,
+      obscureText: true,
+      onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty && errors.contains(kPassNullError)) {
           setState(() {
@@ -104,18 +112,18 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-            decoration: InputDecoration(
-              labelText: "Password",
-              hintText: "Enter your password here",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-            ),
-         );
+      decoration: InputDecoration(
+        labelText: "Password",
+        hintText: "Enter your password here",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+    );
   }
 
   TextFormField buildEmailFormField() {
     return TextFormField(
-            keyboardType: TextInputType.emailAddress,
-             onSaved: (newValue) => email = newValue!,
+      keyboardType: TextInputType.emailAddress,
+      onSaved: (newValue) => email = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty && errors.contains(kEmailNullError)) {
           setState(() {
@@ -144,11 +152,11 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-            decoration: InputDecoration(
-              labelText: "Email",
-              hintText: "Enter your email here",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-            ),
-          );
+      decoration: InputDecoration(
+        labelText: "Email",
+        hintText: "Enter your email here",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+    );
   }
 }

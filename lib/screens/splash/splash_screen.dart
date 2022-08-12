@@ -11,16 +11,19 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.amber.shade100,
-        title: Text("TOKOTO",
-        style: TextStyle(
-          color: kPrimaryColor,
-          fontSize: SizeConfig().getProportionateScreenWidth(38),
-          fontWeight: FontWeight.normal,
-        ),),
-       ),
-       body: body(),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.amber.shade100,
+      //   centerTitle: true,
+      //   title: Text(
+      //     "TOKOTO",
+      //     style: TextStyle(
+      //       color: kPrimaryColor,
+      //       fontSize: SizeConfig().getProportionateScreenWidth(38),
+      //       fontWeight: FontWeight.normal,
+      //     ),
+      //   ),
+      // ),
+      body: body(),
     );
   }
 }

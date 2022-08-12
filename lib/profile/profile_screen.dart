@@ -15,14 +15,15 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: _buildAppBar(context),
       body: ProfileBody(),
-      bottomNavigationBar: BuildButtomNavigation(
-        selectedMenu: MenuState.profile,
-      ),
+      // bottomNavigationBar: BuildButtomNavigation(
+      //   selectedMenu: MenuState.profile,
+      // ),
     );
   }
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
       elevation: 0,
       iconTheme: const IconThemeData(color: Colors.black),

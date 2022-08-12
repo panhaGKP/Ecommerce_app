@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/basic_module/basic_page.dart';
+import 'package:ecommerce_app/screens/Sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 
 import '../Home/home_screen.dart';
@@ -118,8 +120,8 @@ class _OtpFormState extends State<OtpForm> {
                 ),
               ),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => SigninScreen()));
               },
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(15.0),

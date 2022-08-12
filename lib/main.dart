@@ -9,7 +9,6 @@ import 'package:ecommerce_app/route.dart';
 import 'package:ecommerce_app/screens/splash/splash_screen.dart';
 import 'cart/cart_screen.dart';
 
-
 void main(List<String> args) {
   runApp(MyApp());
 }
@@ -32,8 +31,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: SplashScreen.routeName,
       routes: routes,
-      home: SignUpScreen(),
-      
+      // home: SplashScreen(),
     );
   }
 }

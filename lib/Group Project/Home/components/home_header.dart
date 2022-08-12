@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'icon_btn_with_counter.dart';
@@ -19,7 +20,10 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgScr: Icons.shopping_cart,
             numOfItems: 3,
-            press: () {},
+            press: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CartScreen()));
+            },
           ),
           IconBtnWithCounter(
             svgScr: Icons.notifications_active,
